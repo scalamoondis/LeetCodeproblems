@@ -1,0 +1,38 @@
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var maxVowels = function(s, k) {
+    let vowels = ["a","e","i","o","u"];
+    let sum = 0;
+    let lbound = 0;
+    for(let rbound = 0;rbound < k;rbound++){
+        if(vowels.includes(s[rbound])){
+            sum += 1;
+        };
+    };
+    let max = sum;
+    for(let rbound = k;rbound < s.length-1;rbound++, lbound++){
+        if(vowels.includes(s[rbound]) && vowels.includes(s[lbound])==false){
+            sum += 1;
+            max = Math.max(sum, max);
+        }else if(vowels.includes(s[rbound])==false && vowels.includes(s[lbound])){
+            sum -= 1;
+            max = Math.max(sum, max);
+        };
+    };
+    if(max > k){
+        max = k;
+    };
+    return max;
+
+    
+    
+
+};
+
+
+let string1 = 'weallloveyou';
+let number1 = 7;
+maxVowels(string1, number1);

@@ -1,0 +1,49 @@
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function(chars) {
+    let s = [];
+    let Acopy = chars;
+    for(let i = 0;i<Acopy.length;){
+        if(Acopy.length==1){
+            s.push(Acopy[0]);
+            break;
+        };
+        if(Acopy[i]!=Acopy[i+1]){
+            s.push(Acopy[i]);
+            i++;
+        };
+        if(Acopy[i]==Acopy[i+1]){
+            let counterOne = 0;
+            let counterTwo = 1;
+            s.push(Acopy[i]);
+            for(let j = i+1;j<=Acopy.length;j++){
+                if(Acopy[j]==Acopy[i]){
+                    if(counterTwo<9){
+                        counterTwo += 1;
+                    }else{
+                        counterOne += 1;
+                        counterTwo = 0;
+                    };
+                }else{
+                    i = j;
+                    break;};
+            };
+            if(counterOne<=0){
+                s.push(counterTwo);
+            }else{
+                s.push(counterOne);
+                s.push(counterTwo);
+            };
+            
+            
+        };
+    };
+    console.log(s);
+    return s;
+
+};
+
+let array1 = ["a"];
+compress(array1);

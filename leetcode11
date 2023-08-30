@@ -1,0 +1,32 @@
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function(height) {
+    
+    let upperBound = 0;
+    for(let i = 0, j = height.length-1; i < height.length || j < 0;){
+        if(i == j){
+            break;
+        };
+        let multiplier = Math.min(height[i], height[j]);
+        let distance = j - i;
+        let result = multiplier*distance;
+        if(result>upperBound){
+            upperBound = result;
+        };
+        if(i > j){
+            j--;
+        }else{
+            i++;
+        };
+    };
+    return upperBound;
+};
+
+
+let array1 = [1,8,6,2,5,4,8,3,7];
+maxArea(array1);
+
+/* Problem wants highest amount of area that can fit between
+two boundaries */

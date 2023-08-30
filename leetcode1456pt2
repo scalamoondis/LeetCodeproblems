@@ -1,0 +1,36 @@
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var maxVowels = function(s, k) {
+    
+    let rbound = 0;
+    let vowels = ["a","e","i","o","u"];
+    let sum = 0;
+    while(rbound <= s.length){
+        
+
+
+
+    }
+    
+    
+    for(let rbound = 0;rbound <= s.length; rbound++){
+        if(vowels.includes(s[rbound])){
+            
+        }
+
+
+    };
+
+
+    
+    
+
+};
+
+
+let string1 = 'abciiidef';
+let number1 = 3;
+maxVowels(string1, number1);

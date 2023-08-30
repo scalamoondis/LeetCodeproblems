@@ -1,0 +1,53 @@
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var increasingTriplet = function(nums) {
+    /*Moving left to right--no matter the spacing, if there is a sequence of numbers that is i<j<k, then return true. If not, return false.*/
+  let fortune;
+  let sample = nums;
+  let length = sample.length;
+  for(let num = 0;sample.length>=3;){
+      let currentIndex = sample.indexOf(sample[num])
+      for(let i = currentIndex;i<length;i++){
+          if(sample[num]<sample[i]){
+              let currentIndex2 = sample.indexOf(sample[i]);
+              for(let j = currentIndex2;j<length;j++){
+                  if(sample[i]<sample[j]){
+                      fortune = true;
+                      return fortune;
+                      break;};
+              };
+          }else{continue;};
+      };
+      sample.shift();
+  };
+  if(fortune!=true){
+      fortune = false;
+  };
+  return fortune;
+};
+
+let array1 = [1,2,2147483647];
+increasingTriplet(array1);
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var increasingTriplet = function(nums) {
+    let firstNumber = Infinity;
+    let secondNumber = Infinity;
+    
+    for (let currentNumber of nums) {
+      if (currentNumber > secondNumber && currentNumber > firstNumber) {
+        return true;
+      }
+      if (currentNumber > firstNumber) {
+        secondNumber = currentNumber;
+      } else {
+        firstNumber = currentNumber;
+      }
+    }
+    return false;
+  };

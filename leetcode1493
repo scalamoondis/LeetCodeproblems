@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestSubarray = function(nums) {
+    
+    let sum = 0;
+    let deletelimit = 1;
+    let lbound = 0;
+    let rbound = 0;
+
+    while(rbound < nums.length){
+        if(nums[rbound] == 0){
+            deletelimit--;
+        };
+        if(deletelimit < 0){
+            if(nums[lbound] == 0){
+                deletelimit++;
+            };
+            lbound++;
+        };
+
+        rbound++;
+    };
+    
+    return sum - 1;
+};
+
+let array1 = [1,1,0,0,1,1,1,0,1];
+longestSubarray(array1);

@@ -1,0 +1,27 @@
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[][]}
+ */
+var findDifference = function(nums1, nums2) {
+    let bothlist = [];
+    let n1list = [];
+    let n2list = [];
+    for(let value of nums1){
+        if(nums2.includes(value) == false){
+            n1list.push(value);
+        };
+    };
+    for(let value of nums2){
+        if(nums1.includes(value) == false){
+            n2list.push(value);
+        };
+    };
+    bothlist.push(n1list);
+    bothlist.push(n2list);
+    return bothlist;
+};
+
+let array1 = [1,2,3];
+let array2 = [2,4,6];
+findDifference(array1,array2);

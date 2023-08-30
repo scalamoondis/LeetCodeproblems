@@ -1,0 +1,28 @@
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    let counter = 0;
+    let length = nums.length;
+    if(length==1||length==0){
+
+    }else{
+        for(let num of nums){
+            if(num!=0){
+                counter += 1;
+            };
+        };
+        for(let i = 0;i<counter;){
+            if(nums[i]==0){
+                nums.splice(i,1);
+                nums.push(0);
+            }else{
+                i++;
+            }
+        };
+    };
+};
+
+let array1 = [0,1,0,3,12];
+moveZeroes(array1);

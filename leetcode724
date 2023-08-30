@@ -1,0 +1,61 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var pivotIndex = function(nums) {
+    
+    let result = -1;
+    let larray = [];
+    let rarray = [];
+    for(let i = 0;i < nums.length;i++){
+        if(i == 0){
+            larray.push(0);
+            let rslice = nums.slice(i+1);
+            let rsum = 0;
+            for(let number of rslice){
+                rsum += number;
+            };
+            rarray.push(rsum);
+        }else if(i == nums.length-1){
+            rarray.push(0);
+            let lslice = nums.slice(0,i);
+            let lsum = 0;
+            for(let number of lslice){
+                lsum += number;
+            };
+            rarray.push(rsum);
+        }else{
+        let lslice = nums.slice(0,i);
+        let lsum = 0;
+        for(let number of lslice){
+            lsum += number;
+        };
+        larray.push(lsum);
+        let rslice = nums.slice(i+1);
+        let rsum = 0;
+        for(let number of rslice){
+            rsum += number;
+        };
+        rarray.push(rsum);
+        };
+    };
+    for(let i = 0;i < larray.length; i++){
+        if(larray[i] == rarray[i]){
+            result = i;
+            return result;
+            break;
+        };
+
+    };
+
+
+
+
+
+
+
+};
+
+
+let array1 = [-1,-1,0,1,1,0];
+pivotIndex(array1);

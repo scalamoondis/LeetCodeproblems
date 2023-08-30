@@ -1,0 +1,39 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxOperations = function(nums, k) {
+    let counter = 0;
+    for(let i = 0;i < nums.length;){
+        let looking = k - nums[i];
+        if(looking == 0){
+            nums.splice(i,1);
+            continue;
+        }
+        const islooker = (element) => element==looking;
+        if(nums.find(islooker)!=undefined){
+            nums.splice(i,1);
+            let indexer = nums.findIndex(islooker);
+            if(indexer != -1){
+                nums.splice(indexer, 1);
+                counter += 1;
+            }else{
+                nums[i]=looking;
+                i++;
+            };
+        }else{i++;};
+
+
+
+    };
+    return counter;
+
+
+
+
+};
+
+let array1 = [2,2,2,3,1,1,4,1]
+let number = 4;
+maxOperations(array1, number);

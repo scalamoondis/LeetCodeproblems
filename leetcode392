@@ -1,0 +1,38 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+    let length = s.length;
+    let counter = 0;
+    let indexHolder = [];
+    let sortedIndexHolder = [];
+    for(let symbol of s){
+        for(let i = s.indexOf(symbol);i<t.length;){
+            if(symbol==t[i]){
+                counter += 1;
+                indexHolder.push(i);
+                sortedIndexHolder.push(i);
+                break;
+            }else{
+                i++
+            };
+        };
+    };
+    sortedIndexHolder.sort();
+    let v1 = indexHolder.pop();
+    let v2 = sortedIndexHolder.pop();
+    if(counter==length && v1==v2){
+        return true;
+    }else{
+        return false;
+    };
+
+
+
+
+
+};
+
+isSubsequence("aaaaaa","bbaaaa");

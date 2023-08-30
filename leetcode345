@@ -1,0 +1,29 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseVowels = function(s) {
+    let counter1 = 0;
+    let counter2 = s.length-1;
+    let sArrayed = s.split("");
+        /**Bug in code that reverses the entire word, rather than just the vowels.
+         * I believe this is due to the equality evaluation
+         */
+        while(counter1<counter2){
+            if(sArrayed[counter1] === 'A' || 'a' || 'E' || 'e' || 'I' || 'i' || 'O' || 'o' || 'U' || 'u'){ 
+                if(sArrayed[counter2] === 'A' || 'a' || 'E' || 'e' || 'I' || 'i' || 'O' || 'o' || 'U' || 'u' ){
+                    let holder = sArrayed[counter1];
+                    sArrayed[counter1] = sArrayed[counter2];
+                    sArrayed[counter2] = holder;
+                    counter1++
+                    counter2--
+                }else{counter2--};
+            }else{counter1++};
+        };
+        return sArrayed.join("");
+
+
+
+
+
+};

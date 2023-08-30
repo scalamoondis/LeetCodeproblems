@@ -1,0 +1,80 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var longestOnes = function(nums, k) {
+    
+    let sum = 0;
+    let lbound = 0;
+    let zerocounter = 0;
+    for(let rbound = 0;zerocounter < k; rbound++){
+        if(nums[rbound]==1){
+            sum += 1;
+        }else if(nums[rbound]==0){
+            sum += 1;
+            zerocounter += 1;
+        };
+    };
+    let max = sum;
+
+    for(let rbound = sum, zerocounter = k;rbound < nums.length;){
+        if(nums[rbound] == 0){
+            if(nums[lbound] == 0){
+                if(zerocounter < k){
+                    zerocounter += 1;
+                    sum += 1;
+                    rbound++;
+                    max = Math.max(sum, max);
+                }else if(zerocounter == k){
+                    lbound++;
+                    rbound++;
+                };
+            }else if(nums[lbound] == 1){
+                if(zerocounter == k){
+                    sum -= 1;
+                    lbound++;
+                    rbound++;
+                    max = Math.max(sum, max);
+                }else if(zerocounter < k){
+                    sum += 1;
+                    zerocounter += 1;
+                    rbound++;
+                    max = Math.max(sum, max);
+                }
+            };
+
+        }else if(nums[rbound] == 1){
+            if(nums[lbound] == 0){
+                if(zerocounter < k || zerocounter == k){
+                    sum += 1;
+                    rbound++
+                    lbound++
+                    max = Math.max(sum, max);
+                }else{
+                    sum += 1;
+                    zerocounter -= 1;
+                    lbound++
+                    rbound++
+                    max = Math.max(sum, max);
+                };
+            }else if(nums[lbound] == 1){
+                if(zerocounter > k){
+                    sum -= 1;
+                    lbound++;
+                    rbound++;
+                    max = Math.max(sum, max);
+                }else{
+                    sum += 1;
+                    rbound++
+                    max = Math.max(sum, max);
+                };
+            };
+        };
+    };
+    return max;
+};
+
+let array1 = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]
+let number1 = 3;
+longestOnes(array1, number1);

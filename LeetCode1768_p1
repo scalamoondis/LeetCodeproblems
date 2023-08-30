@@ -1,0 +1,13 @@
+/**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {string}
+ */
+
+var mergeAlternately = function(word1, word2) {
+    var split_w1 = word1.split("");
+    return console.log(split_w1);
+
+};
+
+mergeAlternately('fart','darb');

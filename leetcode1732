@@ -1,0 +1,18 @@
+/**
+ * @param {number[]} gain
+ * @return {number}
+ */
+var largestAltitude = function(gain) {
+
+    let sum = 0;
+    let max = 0;
+    for(let i=0;i<gain.length;i++){
+        sum += gain[i];
+        max = Math.max(sum, max);
+    };
+    return max;
+
+};
+
+let array1 = [-4,-3,-2,-1,4,3,2];
+largestAltitude(array1);
